@@ -7,11 +7,15 @@ set(PROJECT_NAME Downloader)
 
 project(${PROJECT_NAME})
 
-add_executable(${PROJECT_NAME} WIN32 main.cpp)
-
+add_executable(Downloader WIN32 main.cpp)
+add_executable(socketServer socketServer.cpp)
+# wxWidgets
 find_package(wxWidgets REQUIRED COMPONENTS net core base)
 if(wxWidgets_USE_FILE) # not defined in CONFIG mode
     include(${wxWidgets_USE_FILE})
 endif()
-
-target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
+target_link_libraries(Downloader ${wxWidgets_LIBRARIES})
+#sockpp
+find_package(sockpp REQUIRED)
+target_link_libraries(Downloader Sockpp::sockpp-static)
+target_link_libraries(socketServer Sockpp::sockpp-static)

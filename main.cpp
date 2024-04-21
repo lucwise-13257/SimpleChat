@@ -1,5 +1,7 @@
 #include <iostream>
 #include <wx/wx.h>
+#include <sockpp/stream_socket.h>
+#include <sockpp/sock_address.h>
 
 class App : public wxApp {
 public:
@@ -23,6 +25,7 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Downloader") {
 
 
   this->Center(wxBOTH);
+
 };
 
 bool App::OnInit() {
