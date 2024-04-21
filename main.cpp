@@ -1,7 +1,5 @@
 #include <iostream>
 #include <wx/wx.h>
-#include <sockpp/stream_socket.h>
-#include <sockpp/sock_address.h>
 
 class App : public wxApp {
 public:

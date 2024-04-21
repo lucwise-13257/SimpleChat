@@ -15,7 +15,10 @@ if(wxWidgets_USE_FILE) # not defined in CONFIG mode
     include(${wxWidgets_USE_FILE})
 endif()
 target_link_libraries(Downloader ${wxWidgets_LIBRARIES})
+#easysocket
+add_subdirectory(easysocket)
+target_link_libraries(socketServer easy-socket)
 #sockpp
-find_package(sockpp REQUIRED)
-target_link_libraries(Downloader Sockpp::sockpp-static)
-target_link_libraries(socketServer Sockpp::sockpp-static)
+# find_package(sockpp REQUIRED)
+# target_link_libraries(Downloader Sockpp::sockpp-static)
+# target_link_libraries(socketServer Sockpp::sockpp-static)
