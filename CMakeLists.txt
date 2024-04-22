@@ -16,10 +16,10 @@ if(wxWidgets_USE_FILE) # not defined in CONFIG mode
 endif()
 target_link_libraries(SimpleChat ${wxWidgets_LIBRARIES})
 #easysocket
-add_subdirectory(easysocket)
-target_link_libraries(socketServer easy-socket)
-target_link_libraries(SimpleChat easy-socket)
+# add_subdirectory(easysocket)
+# target_link_libraries(socketServer easy-socket)
+# target_link_libraries(SimpleChat easy-socket)
 #sockpp
-# find_package(sockpp REQUIRED)
-# target_link_libraries(SimpleChat Sockpp::sockpp-static)
-# target_link_libraries(socketServer Sockpp::sockpp-static)
+find_package(sockpp REQUIRED)
+target_link_libraries(SimpleChat Sockpp::sockpp-static)
+target_link_libraries(socketServer Sockpp::sockpp-static)

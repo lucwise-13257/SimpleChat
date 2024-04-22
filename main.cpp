@@ -2,7 +2,6 @@
 #include <thread>
 #include <string>
 #include <wx/wx.h>
-#include <masesk/EasySocket.hpp>
 
 class App : public wxApp {
 public:
@@ -18,14 +17,16 @@ private:
 };
 
 enum {
-  FILE_MENU = 1
+  FILE_MENU = 1,
+  MSG_BOX = 2
 };
 
 wxIMPLEMENT_APP(App);
 
 MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "SimpleChat") {
-  wxPanel* panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
-  panel->SetBackgroundColour(wxColor(32,54,98));
+  // wxPanel* panel = new wxPanel(this);
+  this->SetBackgroundColour(wxColor(32,54,98));
+  // panel->SetBackgroundColour(wxColor(32,54,98));
   // Menu Stuff
   wxMenuBar* menuBar = new wxMenuBar;
   wxMenu* fileMenu = new wxMenu;
@@ -34,10 +35,12 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "SimpleChat") {
   menuBar->Append(fileMenu, "File");
   SetMenuBar(menuBar);
 
-  wxTextCtrl* msgBox = new wxTextCtrl;
-  
-  wxBoxSizer* horizSizer = new wxBoxSizer(wxHORIZONTAL);
-  horizSizer->Add(panel, 1, wxEXPAND | wxALL);
+  wxTextCtrl* msgBox = new wxTextCtrl(this, MSG_BOX);
+  msgBox->SetValue("PlaceHolder");
+  wxBoxSizer* vertSizer = new wxBoxSizer(wxVERTICAL);
+  // vertSizer->Add(panel, 1, wxEXPAND | wxALL);
+  vertSizer->Add(msgBox, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM);
+  this->SetSizer(vertSizer);
   this->SetSize(wxSize(800, 600));
   this->Center(wxBOTH);
 
