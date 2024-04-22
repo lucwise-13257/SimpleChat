@@ -11,9 +11,10 @@ void run(sockpp::tcp_socket sock)
 	ssize_t n;
 	char buf[512];
 
-	while ((n = sock.read(buf, sizeof(buf))) > 0)
-		sock.write_n(buf, n);
-
+	// while ((n = sock.read(buf, sizeof(buf))) > 0)
+	// 	sock.write_n(buf, n);
+  while ((n = sock.read(buf, sizeof(buf))) > 0)
+    cout << buf << endl;
 	cout << "Connection closed from " << sock.peer_address() << endl;
 }
 
@@ -24,8 +25,7 @@ void run(sockpp::tcp_socket sock)
 
 int main()
 {
-	cout << "Sample TCP echo server for 'sockpp' "
-		<< sockpp::SOCKPP_VERSION << '\n' << endl;
+	cout << "Starting TCP Socket Server" << "\n" << endl;
 
 	// in_port_t port = (argc > 1) ? atoi(argv[1]) : 12345;
   in_port_t port = 2547;
