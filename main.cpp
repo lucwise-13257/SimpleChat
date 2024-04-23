@@ -70,9 +70,5 @@ void MainFrame::OnExit(wxCommandEvent& event) {
 void MainFrame::SendPing(wxCommandEvent& event) {
   in_port_t port = 2547;
   sockpp::tcp_connector conn({"localhost", port}, std::chrono::seconds(5));
-  if (!conn) {
-    wxMessageDialog* dialog = new wxMessageDialog(this, "Error connecting to socket");
-  };
   conn.write_n("Ping from SimpleChat", 21);
-  wxMessageDialog* dialog = new wxMessageDialog(this, "Sent Packet");
 };
