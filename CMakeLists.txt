@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.29.2)
 
-
-set(CMAKE_TOOLCHAIN_FILE "C:/Users/Luca/Desktop/Package Managers/vcpkg/scripts/buildsystems/vcpkg.cmake")
+if(NOT CMAKE_TOOLCHAIN_FILE)
+  set(CMAKE_TOOLCHAIN_FILE "C:/Users/Luca/Desktop/Package Managers/vcpkg/scripts/buildsystems/vcpkg.cmake")
+endif()
 
 set(PROJECT_NAME SimpleChat)
 
